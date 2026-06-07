@@ -15,7 +15,7 @@ $$\frac{d\vec{y}}{dx} = \vec{f}(x, \vec{y}, \vec{\mu}), \quad \vec{y}(x_0) = \ve
 
 ### Шаг 1. Переход к интегральному уравнению
 По лемме об эквивалентности дифференциальной и интегральной задач Коши, перепишем исходную систему в виде интегрального уравнения:
-$$ \vec{y}(x, \vec{\mu}) = \vec{y}_0(\vec{\mu}) + \int_{x_0}^x \vec{f}(\tau, \vec{y}(\tau, \vec{\mu}), \vec{\mu}) \, d\tau $$
+$$\vec{y}(x, \vec{\mu}) = \vec{y}_0(\vec{\mu}) + \int_{x_0}^x \vec{f}(\tau, \vec{y}(\tau, \vec{\mu}), \vec{\mu}) \, d\tau$$
 
 ### Шаг 2. Оценка разности двух решений
 Рассмотрим два решения, соответствующие близким значениям параметра $\vec{\mu}$ и $\vec{\mu} + \Delta\vec{\mu}$. 
@@ -24,40 +24,40 @@ $$ \vec{y}(x, \vec{\mu}) = \vec{y}_0(\vec{\mu}) + \int_{x_0}^x \vec{f}(\tau, \ve
 * $\vec{y}_2(x) = \vec{y}(x, \vec{\mu} + \Delta\vec{\mu})$
 
 Оценим их разность по норме. Для определенности считаем $x \ge x_0$:
-$$ |\vec{y}_2(x) - \vec{y}_1(x)| \le |\vec{y}_0(\vec{\mu} + \Delta\vec{\mu}) - \vec{y}_0(\vec{\mu})| + \int_{x_0}^x \left| \vec{f}(\tau, \vec{y}_2(\tau), \vec{\mu} + \Delta\vec{\mu}) - \vec{f}(\tau, \vec{y}_1(\tau), \vec{\mu}) \right| d\tau $$
+$$|\vec{y}_2(x) - \vec{y}_1(x)| \le |\vec{y}_0(\vec{\mu} + \Delta\vec{\mu}) - \vec{y}_0(\vec{\mu})| + \int_{x_0}^x \left| \vec{f}(\tau, \vec{y}_2(\tau), \vec{\mu} + \Delta\vec{\mu}) - \vec{f}(\tau, \vec{y}_1(\tau), \vec{\mu}) \right| d\tau$$
 
 ### Шаг 3. Оценка подынтегрального выражения
 Добавим и вычтем под интегралом слагаемое $\vec{f}(\tau, \vec{y}_2(\tau), \vec{\mu})$ и применим неравенство треугольника:
-$$ \left| \vec{f}(\tau, \vec{y}_2, \vec{\mu} + \Delta\vec{\mu}) - \vec{f}(\tau, \vec{y}_1, \vec{\mu}) \right| \le $$
-$$ \le \underbrace{ \left| \vec{f}(\tau, \vec{y}_2, \vec{\mu} + \Delta\vec{\mu}) - \vec{f}(\tau, \vec{y}_2, \vec{\mu}) \right| }_{\text{(I)}} + \underbrace{ \left| \vec{f}(\tau, \vec{y}_2, \vec{\mu}) - \vec{f}(\tau, \vec{y}_1, \vec{\mu}) \right| }_{\text{(II)}} $$
+$$\left| \vec{f}(\tau, \vec{y}_2, \vec{\mu} + \Delta\vec{\mu}) - \vec{f}(\tau, \vec{y}_1, \vec{\mu}) \right| \le$$
+$$\le \underbrace{ \left| \vec{f}(\tau, \vec{y}_2, \vec{\mu} + \Delta\vec{\mu}) - \vec{f}(\tau, \vec{y}_2, \vec{\mu}) \right| }_{\text{(I)}} + \underbrace{ \left| \vec{f}(\tau, \vec{y}_2, \vec{\mu}) - \vec{f}(\tau, \vec{y}_1, \vec{\mu}) \right| }_{\text{(II)}}$$
 
 Оценим каждое слагаемое:
 1. **Слагаемое (I)** стремится к нулю при $\Delta\vec{\mu} \to 0$ в силу равномерной непрерывности функции $\vec{f}$ на замкнутом компакте. Обозначим максимум этой разности как $\varepsilon_1(\Delta\vec{\mu}) \to 0$.
 2. **Слагаемое (II)** оценивается через условие Липшица по переменной $\vec{y}$ с константой $L$:
-   $$ \text{(II)} \le L |\vec{y}_2(\tau) - \vec{y}_1(\tau)| $$
+   $$\text{(II)} \le L |\vec{y}_2(\tau) - \vec{y}_1(\tau)|$$
 
 Также обозначим разность начальных условий как $\varepsilon_0(\Delta\vec{\mu}) = |\vec{y}_0(\vec{\mu} + \Delta\vec{\mu}) - \vec{y}_0(\vec{\mu})|$, которая стремится к $0$ в силу непрерывности.
 
 ### Шаг 4. Применение Леммы Гронуолла
 Введем обозначение $\Delta(x) = |\vec{y}_2(x) - \vec{y}_1(x)|$. Подставим полученные оценки в неравенство из Шага 2:
-$$ \Delta(x) \le \varepsilon_0 + \int_{x_0}^x \left( \varepsilon_1 + L \Delta(\tau) \right) d\tau = (\varepsilon_0 + \varepsilon_1 (x - x_0)) + L \int_{x_0}^x \Delta(\tau) \, d\tau $$
+$$\Delta(x) \le \varepsilon_0 + \int_{x_0}^x \left( \varepsilon_1 + L \Delta(\tau) \right) d\tau = (\varepsilon_0 + \varepsilon_1 (x - x_0)) + L \int_{x_0}^x \Delta(\tau) \, d\tau$$
 
 Поскольку мы рассматриваем отрезок $|x - x_0| \le h$, справедливо неравенство:
-$$ \Delta(x) \le (\varepsilon_0 + \varepsilon_1 h) + L \int_{x_0}^x \Delta(\tau) \, d\tau $$
+$$\Delta(x) \le (\varepsilon_0 + \varepsilon_1 h) + L \int_{x_0}^x \Delta(\tau) \, d\tau$$
 
 Применим **усиленную лемму Гронуолла**:
-$$ |\vec{y}_2(x) - \vec{y}_1(x)| \le (\varepsilon_0 + \varepsilon_1 h) e^{L(x - x_0)} \le (\varepsilon_0 + \varepsilon_1 h) e^{Lh} $$
+$$|\vec{y}_2(x) - \vec{y}_1(x)| \le (\varepsilon_0 + \varepsilon_1 h) e^{L(x - x_0)} \le (\varepsilon_0 + \varepsilon_1 h) e^{Lh}$$
 
 Поскольку при $\Delta\vec{\mu} \to 0$ величины $\varepsilon_0 \to 0$ и $\varepsilon_1 \to 0$, правая часть неравенства стремится к нулю. Это доказывает, что решение $\vec{y}(x, \vec{\mu})$ непрерывно по параметру $\vec{\mu}$, причем равномерно по $x$ на отрезке $|x - x_0| \le h$.
 
 ### Шаг 5. Непрерывность по совокупности переменных
 Оценим полное приращение функции по обоим аргументам $(x, \vec{\mu})$:
-$$ |\vec{y}(x + \Delta x, \vec{\mu} + \Delta\vec{\mu}) - \vec{y}(x, \vec{\mu})| \le $$
-$$ \le \underbrace{ |\vec{y}(x + \Delta x, \vec{\mu} + \Delta\vec{\mu}) - \vec{y}(x, \vec{\mu} + \Delta\vec{\mu})| }_{(A)} + \underbrace{ |\vec{y}(x, \vec{\mu} + \Delta\vec{\mu}) - \vec{y}(x, \vec{\mu})| }_{(B)} $$
+$$|\vec{y}(x + \Delta x, \vec{\mu} + \Delta\vec{\mu}) - \vec{y}(x, \vec{\mu})| \le$$
+$$\le \underbrace{ |\vec{y}(x + \Delta x, \vec{\mu} + \Delta\vec{\mu}) - \vec{y}(x, \vec{\mu} + \Delta\vec{\mu})| }_{(A)} + \underbrace{ |\vec{y}(x, \vec{\mu} + \Delta\vec{\mu}) - \vec{y}(x, \vec{\mu})| }_{(B)}$$
 
 * Слагаемое **(B)** стремится к нулю при $\Delta\vec{\mu} \to 0$, как доказано на Шаге 4.
 * Слагаемое **(A)** — это разность значений одного решения в разные моменты времени. Так как $\vec{y}' = \vec{f}$, а функция $\vec{f}$ ограничена на компакте некоторой константой $M$, то в силу теоремы Лагранжа о конечных приращениях:
-  $$ \text{(A)} \le M |\Delta x| \xrightarrow{\Delta x \to 0} 0 $$
+  $$\text{(A)} \le M |\Delta x| \xrightarrow{\Delta x \to 0} 0$$
 
 Оба слагаемых стремятся к нулю при $(\Delta x, \Delta\vec{\mu}) \to (0,0)$. 
 Следовательно, решение $\vec{y}(x, \vec{\mu})$ непрерывно по совокупности переменных. $\blacksquare$
